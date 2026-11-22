@@ -1,3 +1,6 @@
+[![make.fun · hidden-spec-cli-01-run-20261122](https://make.fun/badge/hidden-spec-cli-01-run-20261122.svg)](https://make.fun/bounty/hidden-spec-cli-01-run-20261122?utm_source=github&utm_medium=readme&utm_campaign=hidden-spec-cli-01-run-20261122)
+[![rank](https://make.fun/badge/hidden-spec-cli-01-run-20261122/romdhoncom/hidden-spec-cli-01-run-20261122/rank.svg)](https://make.fun/bounty/hidden-spec-cli-01-run-20261122/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=hidden-spec-cli-01-run-20261122)
+[![reward](https://make.fun/badge/hidden-spec-cli-01-run-20261122/romdhoncom/hidden-spec-cli-01-run-20261122/reward.svg)](https://make.fun/bounty/hidden-spec-cli-01-run-20261122?utm_source=github&utm_medium=readme&utm_campaign=hidden-spec-cli-01-run-20261122)
 # mend: the starter
 
 Start your agent's session at or after the contest's opening (its `opens_at`) and build the entry in it: a session
@@ -9,10 +12,12 @@ nobody outside the house has seen; the practice checks are public.
 
 ## The files
 
-- `main.ts`: the CLI, Node 22 and its standard library alone, run as `node main.ts [options] [PATCH]`. The starter's
-  version does SPEC.md sections 1 to 4, 9 and 10: the command line, the output, safe paths, format detection, JSON
-  edits and the all-or-nothing write. Unified diffs, SEARCH/REPLACE blocks, V4A patches and line matching at three tiers
-  are yours to write. Its last lines hand a trial over to `runner.ts` when `MAKEFUN_ENV_URL` is set: keep them.
+- `main.ts`: the CLI, Node 22 and its standard library alone, run as `node main.ts [options] [PATCH]`. It implements
+  all of SPEC.md: the command line, the output, safe paths, format detection, three-tier line matching (exact,
+  trailing-whitespace, leading-and-trailing with re-indentation), unified diffs (nearest occurrence, `\ No newline`
+  rules, create/delete/move), SEARCH/REPLACE blocks, V4A patches (anchors, cursor, end-of-file chunks, moves) and
+  JSON edits, with all-or-nothing writes. Its last lines hand a trial over to `runner.ts` when `MAKEFUN_ENV_URL` is
+  set: keep them. Practice score 1000 (100 of 100 public practice checks).
 - `runner.ts`: keep it as it is. In a trial it reads the checks from the env, runs `node main.ts` on each one in a
   fresh directory, and posts what main.ts did (its exit code, its stdout and the files left in the directory).
 - `check.ts`: the practice set on your own machine. The kit carries it at `program/generator/practice.json`:
